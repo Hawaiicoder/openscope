@@ -8,6 +8,7 @@ import SettingsController from './SettingsController';
 import TrafficRateController from './TrafficRateController';
 import TutorialView from './TutorialView';
 import { speech_toggle } from '../speech';
+import { record_voice_toggle } from '../speechControl';
 import { EVENT } from '../constants/eventNames';
 import { SELECTORS } from '../constants/selectors';
 import { TRACKABLE_EVENT } from '../constants/trackableEvents';
@@ -32,6 +33,7 @@ class UiController {
         this.$pauseToggle = null;
         this.$pausedImg = null;
         this.$speechToggle = null;
+        this.$recordVoiceToggle = null;
         this.$switchAirport = null;
         this.$toggleLabels = null;
         this.$toggleRestrictedAreas = null;
@@ -67,6 +69,7 @@ class UiController {
         this.$pauseToggle = this.$element.find(SELECTORS.DOM_SELECTORS.PAUSE_TOGGLE);
         this.$pausedImg = this.$element.find(`${SELECTORS.DOM_SELECTORS.PAUSED} img`);
         this.$speechToggle = this.$element.find(SELECTORS.DOM_SELECTORS.TOGGLE_SPEECH);
+        this.$recordVoiceToggle = this.$element.find(SELECTORS.DOM_SELECTORS.TOGGLE_RECORD_SPEECH);
         this.$switchAirport = this.$element.find(SELECTORS.DOM_SELECTORS.SWITCH_AIRPORT);
         this.$toggleLabels = this.$element.find(SELECTORS.DOM_SELECTORS.TOGGLE_LABELS);
         this.$toggleRestrictedAreas = this.$element.find(SELECTORS.DOM_SELECTORS.TOGGLE_RESTRICTED_AREAS);
@@ -106,6 +109,7 @@ class UiController {
         this.$pauseToggle.on('click', (event) => GameController.game_pause_toggle(event));
         this.$pausedImg.on('click', (event) => GameController.game_unpause(event));
         this.$speechToggle.on('click', (event) => speech_toggle(event));
+        this.$recordVoiceToggle.on('click', (event) => record_voice_toggle(event));
         this.$switchAirport.on('click', (event) => this.onToggleAirportList(event));
         this.$toggleLabels.on('click', (event) => this.onToggleLabels(event));
         this.$toggleRestrictedAreas.on('click', (event) => this.onToggleRestrictedAreas(event));
